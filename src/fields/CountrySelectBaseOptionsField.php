@@ -93,20 +93,25 @@ class CountrySelectBaseOptionsField extends Field
             $value = Json::decodeIfJson($value);
         }
 
-        // Normalize to an array
-        $selectedValues = (array) $value;
+         // Normalize to an array
+         $selectedValues = (array) $value;
 
-        if ($this->multi) {
+        if ($this->multi) {        
             // Convert the value to a MultiOptionsFieldData object
             $options = [];
             foreach ($selectedValues as $val) {
+                
+                if (is_array($val)){
+                    $val = $val['value'] ?: null;
+                }
+
                 $label = $this->optionLabel($val);
                 $options[] = new OptionData($label, $val, true);
             }
             $value = new MultiOptionsFieldData($options);
         } else {
             // Convert the value to a SingleOptionFieldData object
-            $value = reset($selectedValues) ?: null;
+            $val = $val['value'] ?: null;
             $label = $this->optionLabel($value);
             $value = new SingleOptionFieldData($label, $value, true);
         }
@@ -146,7 +151,7 @@ class CountrySelectBaseOptionsField extends Field
     {
         if ($this->options) {
             foreach ($this->options as $option) {
-                if ($option['value'] == $value) {
+                if (strcmp($option['value'],$value) == 0) {
                     return $option['label'];
                 }
             }

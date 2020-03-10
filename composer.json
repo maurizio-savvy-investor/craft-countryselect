@@ -1,5 +1,5 @@
 {
-    "name": "lukeyouell/craft-countryselect",
+    "name": "maurizio-savvy-investor/craft-countryselect",
     "description": "Country select field type.",
     "type": "craft-plugin",
     "version": "1.1.2",
@@ -11,7 +11,7 @@
         "country select"
     ],
     "support": {
-        "docs": "https://github.com/lukeyouell/craft-countryselect/blob/v1/README.md",
+        "docs": "https://github.com/maurizio-savvy-investor/craft-countryselect/blob/v1/README.md",
         "issues": "https://github.com/lukeyouell/craft-countryselect/issues"
     },
     "license": "MIT",
